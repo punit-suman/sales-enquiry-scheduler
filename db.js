@@ -1,11 +1,12 @@
 const { Pool } = require('pg');
+require('dotenv').config();
 
 const pool = new Pool({
-    user: 'default',
-    password: 'JeKRzgk1V2yv',
-    host: 'ep-late-meadow-18207352-pooler.us-east-1.postgres.vercel-storage.com',
-    port: 5432,
-    database: 'verceldb',
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    database: process.env.DB_DATABASE,
     ssl: true
 });
 
