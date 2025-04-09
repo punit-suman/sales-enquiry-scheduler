@@ -1,5 +1,7 @@
-const accountSid = 'ACaed064ae2ef9de2eb89437470d456ac6';
-const authToken = '3be6e85a22911b480039c764d7c89123';
+require('dotenv').config();
+
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 
 async function triggerTwilioWhatsappMsg ({ body, to }) {
@@ -7,9 +9,9 @@ async function triggerTwilioWhatsappMsg ({ body, to }) {
         client.messages
             .create({
                 from: 'whatsapp:+15557099144',
-                messagingServiceSid: 'MG4bf98e9fd8f1928c73983ec7e09a94d1',
+                messagingServiceSid: process.env.TWILIO_MESSAGING_SERVICE_SID,
                 to: `whatsapp:+91${to}`,
-                contentSid: 'HX6ce8fac697c83d5d32e75f1bfb36ea17',
+                contentSid: process.env.TWILIO_CONTENT_SID,
                 contentVariables: JSON.stringify({"1": body.todayPending, "2": body.olderPending})
             })
             .then((message) => console.log(message))

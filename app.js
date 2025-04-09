@@ -3,6 +3,7 @@ const cron = require('node-cron');
 const { triggerTwilioWhatsappMsg } = require('./twilio');
 const app = express();
 const port = process.env.PORT || 8080;
+require('dotenv').config();
 
 // Schedule task to run every minute
 cron.schedule('* * * * *', () => {
@@ -15,6 +16,7 @@ app.use(express.json());
 
 // Basic route
 app.get('/', (req, res) => {
+    triggerTwilioWhatsappMsg({body: {todayPending: 'Trial', olderPending: 'Trial'}, to: '7061972084'})
   res.json({ message: 'Welcome to the Express API' });
 });
 
