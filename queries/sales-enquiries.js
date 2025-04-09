@@ -54,7 +54,7 @@ const enquiries = async() => {
 
     console.log(body);
     
-    let numbers = ['7061972084'];
+    let numbers = ['7061972084', '9771067816', '8960742951'];
     for (let i = 0; i < numbers.length; i++) {
         const to = numbers[i];
         await triggerTwilioWhatsappMsg({body, to})
