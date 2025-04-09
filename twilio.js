@@ -14,7 +14,7 @@ async function triggerTwilioWhatsappMsg ({ body, to }) {
                 contentSid: process.env.TWILIO_CONTENT_SID,
                 contentVariables: JSON.stringify({"1": body.todayPending, "2": body.olderPending})
             })
-            .then((message) => console.log(message))
+            .then((message) => console.log(message.sid))
             .catch((error) => {
                 console.error('Error sending message: ', error);
             });

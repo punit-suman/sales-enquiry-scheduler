@@ -1,14 +1,15 @@
 const express = require('express');
 const cron = require('node-cron');
 const { triggerTwilioWhatsappMsg } = require('./twilio');
+const { enquiries } = require('./queries/sales-enquiries');
 const app = express();
 const port = process.env.PORT || 8080;
 require('dotenv').config();
 
 // Schedule task to run every minute
-cron.schedule('0 */6 * * *', () => {
-    console.log('hello world', new Date().toISOString());
-    triggerTwilioWhatsappMsg({body: {todayPending: 'Trial', olderPending: 'Trial'}, to: '7061972084'})
+cron.schedule('0 */1 * * *', () => {
+    console.log('Triggering alert: ', new Date().toISOString());
+    enquiries();
 });
 
 // Middleware for parsing JSON bodies
@@ -16,7 +17,8 @@ app.use(express.json());
 
 // Basic route
 app.get('/', (req, res) => {
-    triggerTwilioWhatsappMsg({body: {todayPending: 'Trial', olderPending: 'Trial'}, to: '7061972084'})
+    enquiries();
+    // triggerTwilioWhatsappMsg({body: {todayPending: 'Trial', olderPending: 'Trial'}, to: '7061972084'})
   res.json({ message: 'Welcome to the Express API' });
 });
 
