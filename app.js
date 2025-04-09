@@ -6,8 +6,8 @@ const port = process.env.PORT || 8080;
 require('dotenv').config();
 
 // Schedule task to run every minute
-cron.schedule('* * * * *', () => {
-  console.log('hello world', new Date().toISOString());
+cron.schedule('0 */6 * * *', () => {
+    console.log('hello world', new Date().toISOString());
     triggerTwilioWhatsappMsg({body: {todayPending: 'Trial', olderPending: 'Trial'}, to: '7061972084'})
 });
 
