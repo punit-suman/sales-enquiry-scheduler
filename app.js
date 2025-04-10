@@ -7,7 +7,12 @@ const port = process.env.PORT || 8080;
 require('dotenv').config();
 
 // Schedule task to run every minute
-cron.schedule('0 */8 * * *', () => {
+cron.schedule('30 4 * * *', () => {
+    console.log('Triggering alert: ', new Date().toISOString());
+    enquiries();
+});
+
+cron.schedule('30 11 * * *', () => {
     console.log('Triggering alert: ', new Date().toISOString());
     enquiries();
 });
