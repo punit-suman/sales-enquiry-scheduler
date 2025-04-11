@@ -12,11 +12,6 @@ cron.schedule('30 4 * * *', () => {
     enquiries();
 });
 
-cron.schedule('30 11 * * *', () => {
-    console.log('Triggering alert: ', new Date().toISOString());
-    enquiries();
-});
-
 // Middleware for parsing JSON bodies
 app.use(express.json());
 
