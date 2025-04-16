@@ -22,6 +22,13 @@ app.get('/', (req, res) => {
   res.json({ message: 'Welcome to the Express API' });
 });
 
+app.get('/response', (req, res) => {
+    // enquiries();
+    // triggerTwilioWhatsappMsg({body: {todayPending: 'Trial', olderPending: 'Trial'}, to: '7061972084'})
+    console.log(req.body, req.params);
+  res.json({ message: 'Welcome to the Express API' });
+});
+
 // Start the server
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server is running on port ${port}`);
