@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
   res.json({ message: 'Welcome to the Express API' });
 });
 
-app.get('/response', (req, res) => {
+app.post('/response', (req, res) => {
     // enquiries();
     // triggerTwilioWhatsappMsg({body: {todayPending: 'Trial', olderPending: 'Trial'}, to: '7061972084'})
     console.log(req.body, req.params);
